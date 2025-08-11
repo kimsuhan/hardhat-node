@@ -5,7 +5,12 @@ require("dotenv").config();
 const config: HardhatUserConfig = {
   solidity: "0.8.28",
   networks: {
-    hardhat: {},
+    hardhat: {
+      mining: {
+        auto: true,
+        interval: 3000, // 3초마다 자동으로 블록 생성
+      },
+    },
     localhost: {
       url: "http://127.0.0.1:8545",
       chainId: 31337,
