@@ -7,8 +7,12 @@ const config: HardhatUserConfig = {
   networks: {
     hardhat: {
       mining: {
-        auto: true,
-        interval: 3000, // 3초마다 자동으로 블록 생성
+        auto: false, // 트랜잭션마다 즉시 블록 생성 X
+        // interval: 3000, // 3초마다 자동으로 블록 생성
+        interval: [1000, 5000], // 1-5초 랜덤 간격 (현실적!)
+        mempool: {
+          order: "priority", // 가스비 높은 순으로 처리
+        },
       },
     },
     localhost: {
